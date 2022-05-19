@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+    <title>Arbeitsstunden-Rechner</title>
+</head>
+
+<header>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active hover-underline-animation" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hover-underline-animation" href="/ueberblick">Überblick</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</head>
+
+
+<body>
+<h3>Hello Patrick, lass uns dein Einkommen im nächsten Monat berechnen.</h3>
+
+        <div class="form-time mb-3">
+            <label class="form-label">Arbeitstag</label><p></p> <input type="date" class="form-control form-control-sm" name="date" value="">
+        </div>
+<p></p>
+        <div class="form-modul mb-3">
+            <label class="form-label">Für welchen Dienst bist du an diesem Tag eingeteilt? </label><p></p>
+            <select class="form-control" name="modul">
+                <option value="nothing">--</option>
+                <option value="CvD1" name="cvd1">CvD1</option>
+                <option value="CvD2" name="cvd2">CvD2</option>
+                <option value="CRep" name="crep">CRep</option>
+                <option value="Spezialdienst 1" name="spezialdienst 1">Spezialdienst 1</option>
+                <option value="Spezialdienst 2" name="spezialdienst 2">Spezialdienst 2</option>
+                <option value="RSOiG" name="rsoig 2">RSOiG</option>
+            </select>
+        </div>
+<p></p>
+
+        <div class="form-textarea mb-3">
+            <label class="form-label">Besonderheiten (Überstunden/Gäste/Projekte)</label><p></p>
+            <textarea class="form-control" name="textarea_notice" placeholder="Notizen"></textarea>
+        </div>
+
+</body>
+</html>
+
+
+<footer>
+    <p>Copyright Patrick Ulber, Scesaplanaweg 3, 7000 Chur</p>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+</footer>
