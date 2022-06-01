@@ -4,33 +4,19 @@
  <meta charset="utf-8">
     <title>Arbeitsstunden-Rechner</title>
 </head>
-
-<header>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active hover-underline-animation" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link hover-underline-animation" href="/ueberblick">Überblick</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-</head>
-
-
+{% include "header.html" %}
 <body>
 <h3>Hello Patrick, lass uns dein Einkommen im nächsten Monat berechnen.</h3>
-
+    <div id="main" class="container">
+        <button type="button" class="btn btn-light formerfolgreich">{{erfolgreich}}</button>
+        <form class="formerfassen" method="POST" action="{{url_for('home')}}">
         <div class="form-time mb-3">
             <label class="form-label">Arbeitstag</label><p></p> <input type="date" class="form-control form-control-sm" name="date" value="">
         </div>
-<p></p>
+
         <div class="form-modul mb-3">
             <label class="form-label">Für welchen Dienst bist du an diesem Tag eingeteilt? </label><p></p>
-            <select class="form-control" name="modul">
+            <select class="form-control" name="dienst">
                 <option value="nothing">--</option>
                 <option value="CvD1" name="cvd1">CvD1</option>
                 <option value="CvD2" name="cvd2">CvD2</option>
@@ -40,12 +26,16 @@
                 <option value="RSOiG" name="rsoig 2">RSOiG</option>
             </select>
         </div>
-<p></p>
 
         <div class="form-textarea mb-3">
             <label class="form-label">Besonderheiten (Überstunden/Gäste/Projekte)</label><p></p>
-            <textarea class="form-control" name="textarea_notice" placeholder="Notizen"></textarea>
+            <textarea class="form-control" name="notizen" placeholder="Notizen"></textarea>
         </div>
+
+        <button class="btn btn-primary" type="submit">Speichern</button>
+        </form>
+    </div>
+
 
 </body>
 </html>

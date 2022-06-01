@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+<p>Aufgeteilt auf die einzelnen Dienste hast du so viel verdient:</p>
+<p>CvD1 = CHF {{ lohnCvD1 }}</p>
+<p>CvD2 = CHF {{ lohnCvD2 }}</p>
+<p>CRep = CHF {{ lohnCRep }}</p>
+<p>Spezialdienst 1 = CHF {{ lohnSpezialdienst1 }}</p>
+<p>Spezialdienst 2 = CHF {{ lohnSpezialdienst2 }}</p>
+<p>RSO im Gspröch = CHF {{ lohnRSOiG }}</p>
+Insgesamt beträgt dein Lohn momentan = CHF {{ gesamtlohn }}
+</body>
+</html>
+
+<footer>
+    <p>Copyright Patrick Ulber, Scesaplanaweg 3, 7000 Chur</p>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+</footer>

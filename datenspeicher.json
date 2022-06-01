@@ -1,0 +1,26 @@
+[
+    {
+        "date":"2022-06-01",
+        "dienst":"CvD1",
+        "notizen":"",
+        "anzahlStunden":8.4
+    },
+    {
+        "date":"2022-06-02",
+        "dienst":"CvD1",
+        "notizen":"",
+        "anzahlStunden":8.4
+    },
+    {
+        "date":"2022-06-03",
+        "dienst":"CvD2",
+        "notizen":"",
+        "anzahlStunden":5.5
+    },
+    {
+        "date":"2022-06-05",
+        "dienst":"Spezialdienst 1",
+        "notizen":"",
+        "anzahlStunden":8.4
+    }
+]
