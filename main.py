@@ -96,8 +96,22 @@ def ueberblick():
     lohnRSOiG = 28 * stundenRSOiG
 
 
-    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCRep, lohnCRep=lohnCRep, lohnSpezialdienst1=lohnSpezialdienst1, lohnSpezieldienst2=lohnSpezieldienst2, lohnRSOiG=lohnRSOiG)
+    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCvD2, lohnCRep=lohnCRep, lohnSpezialdienst1=lohnSpezialdienst1, lohnSpezieldienst2=lohnSpezieldienst2, lohnRSOiG=lohnRSOiG)
+
+
+@app.route('/arbeitstage', methods=['GET', 'POST'])
+def arbeitstage():
+    try:
+        d = open("datenspeicher.json")
+        datenspeicher_list = json.load(d)
+    except FileNotFoundError:
+        datenspeicher_list = []
+
+    datum = datum
+    notizen = notizen
+
+    return render_template("arbeitstage.html", datum=datum, notizen=notizen)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
-
