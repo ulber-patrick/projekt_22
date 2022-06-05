@@ -8,7 +8,6 @@
 <body>
 <h3>Hello Patrick, lass uns dein Einkommen im nächsten Monat berechnen.</h3>
     <div id="main" class="container">
-        <button type="button" class="btn btn-light formerfolgreich">{{erfolgreich}}</button>
         <form class="formerfassen" method="POST" action="{{url_for('home')}}">
         <div class="form-time mb-3">
             <label class="form-label">Arbeitstag</label><p></p> <input type="date" class="form-control form-control-sm" name="date" value="">
@@ -32,8 +31,18 @@
             <textarea class="form-control" name="notizen" placeholder="Notizen"></textarea>
         </div>
 
-        <button class="btn btn-primary" type="submit">Speichern</button>
+        <button class="btn btn-primary" type="submit">Speichern</button><p></p>
+            {{ erfasst }}<p></p>
         </form>
+    </div>
+
+    <div>
+        Deine nächsten Arbeitstage:
+        {% for arbeitstag in arbeitstag_list%}<p></p>
+            {{ arbeitstag[0] }}
+            {{ arbeitstag[1] }}
+            {{ arbeitstag[2] }}
+        {% endfor %}
     </div>
 
 

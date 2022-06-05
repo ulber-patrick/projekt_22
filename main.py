@@ -43,7 +43,14 @@ def home():
         with open("datenspeicher.json", "w") as datenbank_arbeitstage:
             json.dump(datenspeicher_list, datenbank_arbeitstage, indent=4, separators=(",", ":"))
 
-        return render_template("index.html", erfolgreich="Du hast deinen Arbeitstag erfasst!")
+    arbeitstag_list = []
+    for date in datenspeicher_list:
+        arbeitstag_list.append((date["date"], date["dienst"], date["notizen"]))
+
+        arbeitstag_list = sorted(arbeitstag_list, key=lambda x: x[0], reverse=True)
+        arbeitstag_list = arbeitstag_list[:3]
+
+        return render_template("index.html", erfasst="Du hast deinen Arbeitstag erfasst!", arbeitstag_list=arbeitstag_list)
 
     else:
         return render_template("index.html")
