@@ -1,32 +1,8 @@
 [
     {
-        "date":"2022-06-05",
+        "date":"2022-06-11",
         "dienst":"CvD1",
-        "notizen":"Test 1",
-        "anzahlStunden":8.4
-    },
-    {
-        "date":"2022-06-06",
-        "dienst":"CvD2",
-        "notizen":"Test 2",
-        "anzahlStunden":5.5
-    },
-    {
-        "date":"2022-06-07",
-        "dienst":"CRep",
-        "notizen":"Test 3",
-        "anzahlStunden":8.4
-    },
-    {
-        "date":"2022-06-07",
-        "dienst":"CRep",
-        "notizen":"Test 3",
-        "anzahlStunden":8.4
-    },
-    {
-        "date":"2022-06-07",
-        "dienst":"CRep",
-        "notizen":"Test 3",
+        "notizen":"Hallo",
         "anzahlStunden":8.4
     }
 ]

@@ -117,7 +117,7 @@ def arbeitstage():
     datum = datum
     notizen = notizen
 
-    return render_template("arbeitstage.html", datum=datum, notizen=notizen)
+    return render_template("/arbeitstage.html", datum=datum, notizen=notizen)
 
 
 if __name__ == "__main__":
