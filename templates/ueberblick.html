@@ -3,18 +3,67 @@
     {% include "header.html" %}
 
 <body>
-<p>Aufgeteilt auf die einzelnen Dienste hast du so viel verdient:</p>
-<p>CvD1 = CHF {{ lohnCvD1 }}</p>
-<p>CvD2 = CHF {{ lohnCvD2 }}</p>
-<p>CRep = CHF {{ lohnCRep }}</p>
-<p>Spezialdienst 1 = CHF {{ lohnSpezialdienst1 }}</p>
-<p>Spezialdienst 2 = CHF {{ lohnSpezialdienst2 }}</p>
-<p>RSO im Gspröch = CHF {{ lohnRSOiG }}</p>
-Insgesamt beträgt dein Lohn momentan = CHF {{ gesamtlohn }}
+    <div id="main" class="container">
+        <h3>Einkommensübersicht</h3>
+        <p>Aufgrund deiner zu arbeitenden Tage siehst du nun wie viel du im kommenden Monat ingesamt und aufgeteilt auf die einzelnen Dienste verdienst.</p>
+    </div>
+
+    <!--Vorlage von https://www.bootstrapworld.de/tabelle-tutorial.html-->
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-5">
+                <table class="table">
+                    <tr>
+                        <th>Gesamtlohn</th>
+                        <th>          </th>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>CHF {{ gesamtlohn }}</td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-5">
+                <table class="table">
+                    <tr>
+                        <th>Einzelne Dienste</th>
+                        <th>                </th>
+                    </tr>
+                    <tr>
+                        <td>CvD1 </td>
+                        <td>CHF {{ lohnCvD1 }}</td>
+                    </tr>
+                    <tr>
+                        <td>CvD2 </td>
+                        <td>CHF {{ lohnCvD2 }}</td>
+                    </tr>
+                    <tr>
+                        <td>CRep </td>
+                        <td>CHF {{ lohnCRep }}</td>
+                    </tr>
+                    <tr>
+                        <td>Spezialdienst 1</td>
+                        <td>CHF {{ lohnSpezialdienst1 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Spezialdienst 2</td>
+                        <td>CHF {{ lohnSpezialdienst2 }}</td>
+                    </tr>
+                    <tr>
+                        <td>RSO i. G.</td>
+                        <td>CHF {{ lohnRSOiG }}</td>
+                    </tr>
+      </table>
+    </div>
 </body>
 
 
 <footer>
-    <p>Copyright Patrick Ulber, Scesaplanaweg 3, 7000 Chur</p>
+    <center><em>Copyright Patrick Ulber, Scesaplanaweg 3, 7000 Chur</em></center>
 </footer>
 </html>
