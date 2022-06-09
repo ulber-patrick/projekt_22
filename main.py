@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 from datetime import date
 from datetime import datetime
+import plotly.express as px
+from plotly.offline import plot
 import json
 
 
@@ -103,7 +105,15 @@ def ueberblick():
     lohnRSOiG = 28 * stundenRSOiG
 
 
-    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCvD2, lohnCRep=lohnCRep, lohnSpezialdienst1=lohnSpezialdienst1, lohnSpezieldienst2=lohnSpezieldienst2, lohnRSOiG=lohnRSOiG)
+    balkendiagramm_lohn = px.bar(
+        x=["CvD1", "CvD2", "CRep", "Spezialdienst 1", "Spezialdienst 2", "RSOiG"],
+        y=[stundenCvD1, stundenCvD2, stundenCRep, stundenSpezialdienst1, stundenSpezialdienst2, stundenRSOiG],
+        labels={"x": "Dienst", "y": "Arbeitsstunden"}
+    )
+
+    div_balkendiagramm_lohn = plot(balkendiagramm_lohn, output_type="div")
+
+    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCvD2, lohnCRep=lohnCRep, lohnSpezialdienst1=lohnSpezialdienst1, lohnSpezieldienst2=lohnSpezieldienst2, lohnRSOiG=lohnRSOiG, balkendiagramm_lohn=div_balkendiagramm_lohn)
 
 
 @app.route('/arbeitstage', methods=['GET', 'POST'])
