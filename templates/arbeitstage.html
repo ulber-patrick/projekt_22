@@ -2,7 +2,9 @@
 <html lang="en">
 {% include "header.html" %}
 <body>
-{{ notizen_list }}
+{% for element in arbeitstage_liste %}
+{{ element[0] }} {{ element[1] }} {{ element[2] }}<br><br>
+{% endfor %}
 </body>
 </html>
 

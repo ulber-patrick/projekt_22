@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-modul mb-3">
-            <label class="form-label"><b>Deinen Dienst an diesem Tag</b></label>
+            <label class="form-label"><b>Entsprechender Dienst auswählen</b></label>
             <select class="form-control" name="dienst">
                 <option value="nothing">--</option>
                 <option value="CvD1" name="cvd1">CvD1</option>
@@ -34,20 +34,8 @@
             <p>{{ erfasst }}</p>
         </form>
     </div>
-
-    <div id="main" class="container">
-        <h4>Deine nächsten Arbeitstage:</h4>
-            {% for arbeitstag in arbeitstag_list%}
-            {{ arbeitstag[0] }}
-            {{ arbeitstag[1] }}
-            {{ arbeitstag[2] }}
-        {% endfor %}
-    </div>
-
-
 </body>
 </html>
-
 
 <footer>
     <center><em>Copyright Patrick Ulber, Scesaplanaweg 3, 7000 Chur</em></center>

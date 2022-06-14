@@ -1,6 +1,4 @@
 from flask import Flask, request, render_template
-from datetime import date
-from datetime import datetime
 import plotly.express as px
 from plotly.offline import plot
 import json
@@ -26,6 +24,7 @@ def home():
 
         if request.form.get("dienst") == "CvD1":
             anzahl_stunden = 8.4
+
         elif request.form.get("dienst") == "CvD2":
             anzahl_stunden = 5.5
 
@@ -101,7 +100,7 @@ def ueberblick():
     lohnCvD2 = 28 * stundenCvD2
     lohnCRep = 28 * stundenCRep
     lohnSpezialdienst1 = 28 * stundenSpezialdienst1
-    lohnSpezieldienst2 = 28 * stundenSpezialdienst2
+    lohnSpezialdienst2 = 28 * stundenSpezialdienst2
     lohnRSOiG = 28 * stundenRSOiG
 
 
@@ -113,21 +112,25 @@ def ueberblick():
 
     div_balkendiagramm_lohn = plot(balkendiagramm_lohn, output_type="div")
 
-    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCvD2, lohnCRep=lohnCRep, lohnSpezialdienst1=lohnSpezialdienst1, lohnSpezieldienst2=lohnSpezieldienst2, lohnRSOiG=lohnRSOiG, balkendiagramm_lohn=div_balkendiagramm_lohn)
+    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCvD2, lohnCRep=lohnCRep, lohnSpezialdienst1=lohnSpezialdienst1, lohnSpezialdienst2=lohnSpezialdienst2, lohnRSOiG=lohnRSOiG, balkendiagramm_lohn=div_balkendiagramm_lohn)
 
 
 @app.route('/arbeitstage', methods=['GET', 'POST'])
 def arbeitstage():
+
+    arbeitstage_liste = []
+
     try:
         d = open("datenspeicher.json")
         datenspeicher_list = json.load(d)
     except FileNotFoundError:
         datenspeicher_list = []
 
-    datum = datum
-    notizen = notizen
+    for element in datenspeicher_list:
+        arbeitstage_liste.append([element["date"], element["dienst"], element["notizen"]])
 
-    return render_template("/arbeitstage.html", datum=datum, notizen=notizen)
+
+    return render_template("/arbeitstage.html", arbeitstage_liste=arbeitstage_liste)
 
 
 if __name__ == "__main__":
