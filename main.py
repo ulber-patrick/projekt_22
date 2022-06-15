@@ -31,10 +31,10 @@ def home():
         elif request.form.get("dienst") == "CRep":
             anzahl_stunden = 8.4
 
-        elif request.form.get("dienst") == "Spezialdienst 1":
+        elif request.form.get("dienst") == "SpezDienst 1":
             anzahl_stunden = 8.4
 
-        elif request.form.get("dienst") == "Spezialdienst 2":
+        elif request.form.get("dienst") == "SpezDienst 2":
             anzahl_stunden = 4.2
 
         elif request.form.get("dienst") == "RSOiG":
@@ -48,9 +48,6 @@ def home():
     for date in datenspeicher_list:
         arbeitstag_list.append((date["date"], date["dienst"], date["notizen"]))
 
-        arbeitstag_list = sorted(arbeitstag_list, key=lambda x: x[0], reverse=True)
-        arbeitstag_list = arbeitstag_list[:3]
-
         return render_template("index.html", erfasst="Du hast deinen Arbeitstag erfasst!", arbeitstag_list=arbeitstag_list)
 
     else:
@@ -63,8 +60,8 @@ def ueberblick():
     stundenCvD1 = 0
     stundenCvD2 = 0
     stundenCRep = 0
-    stundenSpezialdienst1 = 0
-    stundenSpezialdienst2 = 0
+    stundenSpezDienst1 = 0
+    stundenSpezDienst2 = 0
     stundenRSOiG = 0
 
     try:
@@ -85,11 +82,11 @@ def ueberblick():
         elif element["dienst"] == "CRep":
             stundenCRep = stundenCRep + element["anzahlStunden"]
 
-        elif element["dienst"] == "Spezialdienst 1":
-            stundenSpezialdienst1 = stundenSpezialdienst1 + element["anzahlStunden"]
+        elif element["dienst"] == "SpezDienst 1":
+            stundenSpezDienst1 = stundenSpezDienst1 + element["anzahlStunden"]
 
-        elif element["dienst"] == "Spezialdeinst 2":
-            stundenSpezialdienst2 = stundenSpezialdienst2 + element["anzahlStunden"]
+        elif element["dienst"] == "SpezDienst 2":
+            stundenSpezDienst2 = stundenSpezDienst2 + element["anzahlStunden"]
 
         elif element["dienst"] == "RSOiG":
             stundenRSOiG = stundenRSOiG + element["anzahlStunden"]
@@ -99,20 +96,20 @@ def ueberblick():
     lohnCvD1 = 28 * stundenCvD1
     lohnCvD2 = 28 * stundenCvD2
     lohnCRep = 28 * stundenCRep
-    lohnSpezialdienst1 = 28 * stundenSpezialdienst1
-    lohnSpezialdienst2 = 28 * stundenSpezialdienst2
+    lohnSpezDienst1 = 28 * stundenSpezDienst1
+    lohnSpezDienst2 = 28 * stundenSpezDienst2
     lohnRSOiG = 28 * stundenRSOiG
 
 
     balkendiagramm_lohn = px.bar(
-        x=["CvD1", "CvD2", "CRep", "Spezialdienst 1", "Spezialdienst 2", "RSOiG"],
-        y=[stundenCvD1, stundenCvD2, stundenCRep, stundenSpezialdienst1, stundenSpezialdienst2, stundenRSOiG],
+        x=["CvD1", "CvD2", "CRep", "SpezDienst 1", "SpezDienst 2", "RSOiG"],
+        y=[stundenCvD1, stundenCvD2, stundenCRep, stundenSpezDienst1, stundenSpezDienst2, stundenRSOiG],
         labels={"x": "Dienst", "y": "Arbeitsstunden"}
     )
 
     div_balkendiagramm_lohn = plot(balkendiagramm_lohn, output_type="div")
 
-    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCvD2, lohnCRep=lohnCRep, lohnSpezialdienst1=lohnSpezialdienst1, lohnSpezialdienst2=lohnSpezialdienst2, lohnRSOiG=lohnRSOiG, balkendiagramm_lohn=div_balkendiagramm_lohn)
+    return render_template("ueberblick.html", gesamtlohn=gesamtlohn, lohnCvD1=lohnCvD1, lohnCvD2=lohnCvD2, lohnCRep=lohnCRep, lohnSpezDienst1=lohnSpezDienst1, lohnSpezDienst2=lohnSpezDienst2, lohnRSOiG=lohnRSOiG, balkendiagramm_lohn=div_balkendiagramm_lohn)
 
 
 @app.route('/arbeitstage', methods=['GET', 'POST'])

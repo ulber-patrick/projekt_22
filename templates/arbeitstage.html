@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include "header.html" %}
+    {% include "header.html" %}
+
 <body>
-{% for element in arbeitstage_liste %}
-{{ element[0] }} {{ element[1] }} {{ element[2] }}<br><br>
+    <div id="main" class="container">
+        <h3>Liste der Arbeitstage</h3>
+        <p>Hier kannst du sehen, an welchen Tagen du arbeinten musst oder gearbeitet hast und welchen Dienst du hast oder hattest. Ebenfalls Besonderheiten sieht du allfällige Besonderheiten zu jedem einzelnen Tag.</p>
+    </div>
+
+    {% for element in arbeitstage_liste %}
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-5">
+                <table class="table">
+                    <tr>
+                        <th width=200>Arbeitstag</th>
+                        <th width=300>Dienst</th>
+                        <th width=500>Besonderheiten</th>
+                    </tr>
+                    <tr>
+                        <td>{{ element[0] }}</td>
+                        <td>{{ element[1] }}</td>
+                        <td>{{ element[2] }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endfor %}
-</body>
+ </body>
 </html>
 
 

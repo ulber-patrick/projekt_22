@@ -5,22 +5,22 @@
 <body>
     <div id="main" class="container">
         <h3>Bleibe immer UpToDate, wie viel du im nächsten Monat verdienst.</h3>
-        <p>Wenn du neben deinem Studium noch unregelmässig arbeitest und nicht genau weisst, wie viel Geld dir im kommenden Monat zur verfügung stehen wird, ist dieser Lohnrechner genau das Richtige für dich. Trage einfach deinen Arbeitstag mit dem dazugehörigen Dienst ein und du weisst immer wie hoch dein Bruttoeinkommen im nächsten Monat ausfällt.</p>
+        <p>Wenn du neben deinem Studium noch unregelmässig arbeitest und nicht genau weisst, wie viel Geld dir im kommenden Monat zur verfügung stehen wird, ist dieser Lohnrechner genau das Richtige für dich. Trage einfach deinen Arbeitstag mit dem dazugehörigen Dienst ein und du weisst immer wie hoch dein Bruttoeinkommen im nächsten Monat ausfällt. Ebenfalls kannst du bei den Notizen Bosonderheiten zum jeweiligen Tag festhalten.</p>
 
         <form class="formerfassen" method="POST" action="{{url_for('home')}}">
         <div class="form-time mb-3">
-            <label class="form-label"><b>Arbeitstag</b></label> <input type="date" class="form-control form-control-sm" name="date" value="">
+            <label class="form-label"><b>Arbeitstag*</b></label> <input type="date" class="form-control form-control-sm" name="date" value="">
         </div>
 
         <div class="form-modul mb-3">
-            <label class="form-label"><b>Entsprechender Dienst auswählen</b></label>
+            <label class="form-label"><b>Entsprechender Dienst auswählen*</b></label>
             <select class="form-control" name="dienst">
                 <option value="nothing">--</option>
                 <option value="CvD1" name="cvd1">CvD1</option>
                 <option value="CvD2" name="cvd2">CvD2</option>
                 <option value="CRep" name="crep">CRep</option>
-                <option value="Spezialdienst 1" name="spezialdienst 1">Spezialdienst 1</option>
-                <option value="Spezialdienst 2" name="spezialdienst 2">Spezialdienst 2</option>
+                <option value="SpezDienst 1" name="spezdienst 1">SpezDienst 1</option>
+                <option value="SpezDienst 2" name="spezdienst 2">SpezDienst 2</option>
                 <option value="RSOiG" name="rsoig 2">RSOiG</option>
             </select>
         </div>
@@ -32,6 +32,7 @@
 
         <button class="btn btn-primary" type="submit">Speichern</button><p></p>
             <p>{{ erfasst }}</p>
+            <p>* Pflichtfeld</p>
         </form>
     </div>
 </body>
