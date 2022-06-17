@@ -21,7 +21,7 @@ def home():
         arbeitstag = request.form.get("date")
         dienst = request.form.get("dienst")
         notizen = request.form.get("notizen")
-
+        #Jeder Dienst wird nun mit den Anzahl Arbeitsstunden hinterlegt.
         if request.form.get("dienst") == "CvD1":
             anzahl_stunden = 8.4
 
@@ -55,6 +55,7 @@ def home():
 
 
 @app.route('/ueberblick', methods=['GET', 'POST'])
+#Damit immer von Null aus gerechent wird, wird dies für dies für die Gesamtstunden und die jeweiligen Dienste gemacht.
 def ueberblick():
     gesamtstunden = 0
     stundenCvD1 = 0
@@ -69,7 +70,7 @@ def ueberblick():
         datenspeicher_list = json.load(d)
     except FileNotFoundError:
         datenspeicher_list = []
-
+    #Die Anzahl Stunden werden aufgrund der erfassten Tage und der zu den Diensten hinterlegten Stunden berechnet.
     for element in datenspeicher_list:
         gesamtstunden = gesamtstunden + element["anzahlStunden"]
 
@@ -91,7 +92,7 @@ def ueberblick():
         elif element["dienst"] == "RSOiG":
             stundenRSOiG = stundenRSOiG + element["anzahlStunden"]
 
-
+    #Rechnungsschema mit jeweiligem Stundenansatz.
     gesamtlohn = 28 * gesamtstunden
     lohnCvD1 = 28 * stundenCvD1
     lohnCvD2 = 28 * stundenCvD2
@@ -100,7 +101,7 @@ def ueberblick():
     lohnSpezDienst2 = 28 * stundenSpezDienst2
     lohnRSOiG = 28 * stundenRSOiG
 
-
+    #Diagramm zeigt an, wie viele Stunden bei jedem einzelnen Dienst gearbeitet wurde.
     balkendiagramm_lohn = px.bar(
         x=["CvD1", "CvD2", "CRep", "SpezDienst 1", "SpezDienst 2", "RSOiG"],
         y=[stundenCvD1, stundenCvD2, stundenCRep, stundenSpezDienst1, stundenSpezDienst2, stundenRSOiG],
@@ -122,10 +123,9 @@ def arbeitstage():
         datenspeicher_list = json.load(d)
     except FileNotFoundError:
         datenspeicher_list = []
-
+    #Elemente aus der Liste datenspeicher_list werden der Liste arbeitstage_list hinzugefügt, damit die Elemente der Liste arbeitstage_list also Übersicht augegeben werden können.
     for element in datenspeicher_list:
         arbeitstage_liste.append([element["date"], element["dienst"], element["notizen"]])
-
 
     return render_template("/arbeitstage.html", arbeitstage_liste=arbeitstage_liste)
 

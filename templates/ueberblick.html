@@ -3,70 +3,73 @@
     {% include "header.html" %}
 
 <body>
-    <div id="main" class="container">
-        <h3>Einkommensübersicht</h3>
-        <p>Aufgrund deiner zu arbeitenden Tage siehst du nun wie viel du im kommenden Monat ingesamt und aufgeteilt auf die einzelnen Dienste verdienst.</p>
-    </div>
+<div id="main" class="container">
+    <h3>Einkommensübersicht</h3>
+    <p>Aufgrund deiner zu arbeitenden Tage siehst du nun wie viel du im kommenden Monat ingesamt und aufgeteilt auf die einzelnen Dienste verdienst.</p>
+</div>
+<!--Vorlage von https://www.bootstrapworld.de/tabelle-tutorial.html-->
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-5">
+            <table class="table">
+                <tr>
+                    <th>Gesamtlohn</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td width=185>Total</td>
+                    <td>CHF {{ gesamtlohn }}</td>
+                </tr>
+                <tr>
+                </tr>
+            </table>
+        </div>
 
-    <!--Vorlage von https://www.bootstrapworld.de/tabelle-tutorial.html-->
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-5">
-                <table class="table">
-                    <tr>
-                        <th>Gesamtlohn</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td width=185>Total</td>
-                        <td>CHF {{ gesamtlohn }}</td>
-                    </tr>
-                    <tr>
-                    </tr>
-                </table>
-    </div>
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-5">
+                    <table class="table">
+                        <tr>
+                            <th>Einzelne Dienste</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>CvD1</td>
+                            <td>CHF {{ lohnCvD1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>CvD2</td>
+                            <td>CHF {{ lohnCvD2 }}</td>
+                        </tr>
+                        <tr>
+                            <td>CRep</td>
+                            <td>CHF {{ lohnCRep }}</td>
+                        </tr>
+                        <tr>
+                            <td>SpezDienst 1</td>
+                            <td>CHF {{ lohnSpezDienst1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>SpezDienst 2</td>
+                            <td>CHF {{ lohnSpezDienst2 }}</td>
+                        </tr>
+                        <tr>
+                            <td>RSO i. G.</td>
+                            <td>CHF {{ lohnRSOiG }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-5">
-                <table class="table">
-                    <tr>
-                        <th>Einzelne Dienste</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>CvD1</td>
-                        <td>CHF {{ lohnCvD1 }}</td>
-                    </tr>
-                    <tr>
-                        <td>CvD2</td>
-                        <td>CHF {{ lohnCvD2 }}</td>
-                    </tr>
-                    <tr>
-                        <td>CRep</td>
-                        <td>CHF {{ lohnCRep }}</td>
-                    </tr>
-                    <tr>
-                        <td>SpezDienst 1</td>
-                        <td>CHF {{ lohnSpezDienst1 }}</td>
-                    </tr>
-                    <tr>
-                        <td>SpezDienst 2</td>
-                        <td>CHF {{ lohnSpezDienst2 }}</td>
-                    </tr>
-                    <tr>
-                        <td>RSO i. G.</td>
-                        <td>CHF {{ lohnRSOiG }}</td>
-                    </tr>
-      </table>
+        <div id="main" class="container">
+            <p></p><h3>Stundenübersicht</h3>
+            <p>Auf dem untenstehenden Balkendiagramm siehst du, wie viele Studen du pro Dienst arbeitest.</p>
+            {{ balkendiagramm_lohn|safe }}
+            <!-- Vorlage für den Ausdruck-Button: https://stackoverflow.com/questions/18191893/generate-pdf-from-html-in-div-using-javascript-->
+            <input type="submit" class="btn btn-primary mt-1" onclick="window.print();" value="Einkommens- und Stundeübersicht ausdrucken">
+        </div>
     </div>
-
-    <div id="main" class="container">
-        <p></p><h3>Stundenübersicht</h3>
-        <p>Auf dem untenstehenden Balkendiagramm siehst du, wie viele Studen du pro Dienst arbeitest.</p>
-        {{ balkendiagramm_lohn|safe }}
-    </div>
-
 </body>
 
 
