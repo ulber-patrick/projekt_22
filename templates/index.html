@@ -9,12 +9,12 @@
 
         <form class="formerfassen" method="POST" action="{{url_for('home')}}">
         <div class="form-time mb-3">
-            <label class="form-label"><b>Arbeitstag*</b></label> <input type="date" class="form-control form-control-sm" name="date" value="">
+            <label class="form-label"><b>Arbeitstag*</b></label> <input type="date" class="form-control form-control-sm" name="date" required="required" value=""> #Vorlage für Pflichtfeld: https://t3n.de/news/html5-pflichtfelder-360171/
         </div>
 
         <div class="form-modul mb-3">
             <label class="form-label"><b>Entsprechender Dienst auswählen*</b></label>
-            <select class="form-control" name="dienst">
+            <select class="form-control" name="dienst" required="required"> #Vorlage für Pflichtfeld: https://t3n.de/news/html5-pflichtfelder-360171/
                 <option value="nothing">--</option>
                 <option value="CvD1" name="cvd1">CvD1</option>
                 <option value="CvD2" name="cvd2">CvD2</option>
