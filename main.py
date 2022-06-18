@@ -15,7 +15,6 @@ def home():
         datenspeicher_list = json.load(d)
     except FileNotFoundError:
         datenspeicher_list = []
-
     #Daten, welche im Formular eingegeben wurden und in JSON gespeichert sind, werden nun abgefragt.
     if request.method == 'POST':
         arbeitstag = request.form.get("date")
@@ -43,13 +42,12 @@ def home():
         datenspeicher_list.append({"date": arbeitstag, "dienst": dienst, "notizen": notizen, "anzahlStunden": anzahl_stunden})
         with open("datenspeicher.json", "w") as datenbank_arbeitstage:
             json.dump(datenspeicher_list, datenbank_arbeitstage, indent=4, separators=(",", ":"))
-
+    # Daten werden der Liste arbeitstage_list hinzugefügt.
     arbeitstag_list = []
     for date in datenspeicher_list:
         arbeitstag_list.append((date["date"], date["dienst"], date["notizen"]))
 
         return render_template("index.html", erfasst="Du hast deinen Arbeitstag erfasst!", arbeitstag_list=arbeitstag_list)
-
     else:
         return render_template("index.html")
 
@@ -92,7 +90,7 @@ def ueberblick():
         elif element["dienst"] == "RSOiG":
             stundenRSOiG = stundenRSOiG + element["anzahlStunden"]
 
-    #Rechnungsschema mit jeweiligem Stundenansatz.
+    #Rechnungsgrundlage mit jeweiligem Stundenansatz.
     gesamtlohn = 28 * gesamtstunden
     lohnCvD1 = 28 * stundenCvD1
     lohnCvD2 = 28 * stundenCvD2
@@ -102,6 +100,7 @@ def ueberblick():
     lohnRSOiG = 28 * stundenRSOiG
 
     #Diagramm zeigt an, wie viele Stunden bei jedem einzelnen Dienst gearbeitet wurde.
+    #Quelle: https://www.delftstack.com/de/howto/plotly/plotly-bar-chart/
     balkendiagramm_lohn = px.bar(
         x=["CvD1", "CvD2", "CRep", "SpezDienst 1", "SpezDienst 2", "RSOiG"],
         y=[stundenCvD1, stundenCvD2, stundenCRep, stundenSpezDienst1, stundenSpezDienst2, stundenRSOiG],
